@@ -1,11 +1,13 @@
 import React from 'react';
 import MainPage from './MainPage';
-import './styles.css'; // Assurez-vous que le chemin est correct
+import Header from './Header';
+import './styles.css';
 
 function App() {
   return (
     <div className="App">
       <MainPage />
+      <Header />
     </div>
   );
 }

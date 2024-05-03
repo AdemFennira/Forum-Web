@@ -1,124 +1,324 @@
+/* Styles généraux */
 body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
-    color: #333;
-  }
-  
-  input, textarea, button {
-    padding: 8px;
-    margin: 5px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  
-  button {
-    background-color: #0056b3;
-    color: white;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #004494;
-  }
-  
-  h1, h3 {
-    color: #333;
-  }
-  
-  .form-container {
-    display: flex;
-    justify-content: center;
-    padding: 20px;
-  }
-  
-  .login-form, .signup-form {
-    padding: 20px;
-    border: 1px solid #ccc;
-    margin: 10px;
-    background-color: white;
-    border-radius: 8px;
-  }
-  
-  .messages-container {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .message-form {
-    width: 50%;
-    margin-bottom: 20px;
-  }
-  
-  .message-list {
-    width: 50%;
-    background-color: white;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    overflow-y: auto;
-    height: 400px;
-  }
-  
-  .message-item {
-    border-bottom: 1px solid #ccc;
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  .logout-button {
-    padding: 8px 16px;
-    background-color: #d9534f; /* Rouge pour indiquer une action de déconnexion */
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 20px; /* Ajout d'espace au-dessus du bouton */
-  }
-  
-  .logout-button:hover {
-    background-color: #c9302c; /* Un rouge plus foncé au survol */
-  }
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #000; 
+  color: #fff; 
+  background-image: url('./background.jpeg'); 
+  background-repeat: no-repeat; /* Pour ne pas répéter l'image */
+  background-size: cover; /* Pour couvrir toute la page */
+  background-position: center; /* Centrer l'image dans la page */
+}
 
-  /*user-profile*/
 
-  .user-profile-icon {
+/* Styles pour la page de connexion/inscription */
+.form-container {
   display: flex;
-  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+/* Ajoutez ces styles pour aligner les formulaires à droite et ajouter un saut de ligne après chaque case */
+.login-form {
+  position : absolute; 
+  top : 160px;
+  left : 650px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: 20px;
+  background-color: #f0f8ff; /* Bleu clair */
+  border-radius: 10px; /* Bordures arrondies */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 200px; /* Largeur des formulaires */
+  margin: auto; /* Centrer les formulaires horizontalement */
+}
+
+.signup-form {
+  position : absolute; 
+  top: 40px;
+  right: 100px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: 10px;
+  background-color: #f0f8ff; /* Bleu clair */
+  border-radius: 10px; /* Bordures arrondies */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 200px; /* Largeur des formulaires */
+  margin: auto; /* Centrer les formulaires horizontalement */
+}
+
+.login-form label,
+.signup-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"],
+.signup-form input[type="text"],
+.signup-form input[type="password"] {
+  width: calc(100% - 20px); /* Largeur moins la marge */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px; /* Ajouter un saut de ligne */
+}
+
+.login-form button,
+.signup-form button {
+  width: calc(100% - 20px); /* Largeur moins la marge */
+  background-color: #0056b3; /* Bleu */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
   cursor: pointer;
 }
 
-.user-photo {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 10px;
+.login-form button:hover,
+.signup-form button:hover {
+  background-color: #004494; /* Bleu plus foncé au survol */
 }
 
-.user-name {
-  font-weight: bold;
+
+/* Styles pour la page d'accueil du profil */
+.messages-container {
+  position: absolute;
+  left:40px;
+  top: 250px;
+  bottom: 10px;
+  margin: 20px; 
+  background-color: #f0f8ff; 
+  padding: 20px;
+  border-radius: 10px; 
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/*UserProfilePage*/
+.messages-container h1 {
+  color: #0056b3; 
+  border-color: #c9302c;
+  margin-bottom: 20px;
+  width: 1100px
+}
 
-.profile-banner {
+.message-form {
+  max-width: 400px;
+  margin-bottom: 10px;
+}
+
+.message-list {
+  position: absolute;
+  left:  520px;
+  top: 50px;
   width: 100%;
-  height: 200px; /* Ajustez selon vos besoins */
-  background-color: #eee; /* Mettez une image si vous préférez */
+  max-width: 500px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y: auto;
+  max-height: 200px;
 }
 
-.profile-photo-large {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  margin-top: -50px; /* Ajustez selon la taille de votre bannière */
-  border: 3px solid white;
+.message-item {
+  border-bottom: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.user-messages {
-  margin-top: 20px;
+.message-form label {
+  display: block;
+  margin-bottom: 10px;
 }
 
+.message-form input[type="text"],
+.message-form input[type="password"],
+.message-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.message-form button {
+  background-color: #0056b3; /* Bleu */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.message-form button:hover {
+  background-color: #004494; /* Bleu plus foncé au survol */
+}
+
+
+/* Ajoutez ces styles pour le bouton logout */
+.logout-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 8px 16px;
+  background-color: #d9534f; /* Rouge pour indiquer une action de déconnexion */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Si vous souhaitez appliquer une transition douce au survol du bouton */
+.logout-button:hover {
+  background-color: #c9302c; /* Un rouge plus foncé au survol */
+}
+
+
+.logo {
+  position : absolute ; 
+  top : 40px;
+  left : 200px; 
+  width: 200px;
+  height: 200px;
+  border-radius: 0%;
+  margin-left: auto; /* Pousse le logo à droite */
+}
+
+.welcome-section {
+  position: fixed; /* Centre le texte dans la section */
+  top: 250px;
+  left: 70px;
+  width: 450px;
+  padding: 20px; /* Ajoute un peu d'espacement autour du texte */
+  background-color: #f0f0f0; /* Donne une couleur de fond légère */
+  margin-top: 50px; /* Ajoute une marge en haut */;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-section h1 {
+  color: #333; 
+  font-size: 22px; 
+}
+
+.welcome-section p {
+  color: #666; 
+  font-size: 14px;
+} 
+
+
+/* PollComponent.css */
+.poll-container {
+  position: absolute;
+  top: 100px; /* Distance du haut de la page */
+  left: 50%; /* Centre le bloc horizontalement */
+  transform: translateX(-50%); /* Centrage précis en X */
+  background-color: #f4f4f4;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  width: 80%;
+  max-width: 600px;
+}
+
+
+.poll-question {
+  top: 10px;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: #333;
+}
+
+.poll-option {
+  margin: 10px 0;
+}
+
+.poll-option button {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.poll-option button:hover {
+  background-color: #0056b3;
+}
+
+.poll-results {
+  list-style-type: none;
+  padding: 0;
+}
+
+.poll-results li {
+  padding: 8px;
+  background-color: white;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+/* Styles pour PollCreator */
+.poll-creator-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  top: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin: 20px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.poll-creator-title {
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.poll-creator-input, .poll-creator-add-btn, .poll-creator-submit-btn {
+  padding: 8px 12px;
+  margin-right: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.poll-creator-add-btn, .poll-creator-submit-btn {
+  cursor: pointer;
+  background-color: #0056b3;
+  color: white;
+  border: none;
+}
+
+.poll-creator-add-btn:hover, .poll-creator-submit-btn:hover {
+  background-color: #00408a;
+}
+
+.poll-creator-options-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 15px;
+}
+
+.poll-creator-option {
+  background-color: #e3e3e3;
+  padding: 5px;
+  margin-bottom: 5px;
+  border-radius: 4px;
+}
+
+/* Ajouts dans PollComponent.css */
+.poll-creator-question-input {
+  width: 100%;
+  padding: 8px 12px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+}
