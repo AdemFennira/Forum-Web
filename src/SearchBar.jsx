@@ -15,11 +15,11 @@ function SearchBar({ onSearch }) {
         placeholder="Search users or topics..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        style={{ position: 'fixed', left:'540px', width: '300px', marginRight: '10px', top:'100px' }}
+        style={{ left:'540px', width: '300px', marginRight: '10px', top:'100px' }}
       />
       <button 
         type="submit"
-        style={{ position: 'fixed', left:'850px', width:'90px', marginRight: '10px', top:'100px' }}
+        style={{ left:'850px', width:'90px', marginRight: '10px', top:'100px' }}
         >Search</button>
     </form>
   );

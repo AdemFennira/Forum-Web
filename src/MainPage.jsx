@@ -6,16 +6,20 @@ import MessageList from './MessageList';
 import Logout from './Logout';
 import SearchBar from './SearchBar';
 import UserGreeting from './UserGreeting';
-import ProfilePage from './ProfilePage'; // Assure-toi d'importer ProfilePage
+import ProfilePage from './ProfilePage';
 import PollComponent from './PollComponent';
 import PollCreator from './PollCreator';
-
 
 function MainPage() {
   const [isConnected, setIsConnected] = useState(false);
   const [currentUser, setCurrentUser] = useState({ email: '' });
+  const [userProfile, setUserProfile] = useState({
+    bannerUrl: '/path/to/default/banner.jpg',
+    profilePicUrl: '/path/to/default/profilePic.jpg',
+    joinedDate: new Date().toISOString()
+  });
   const [messages, setMessages] = useState([]);
-  const [showProfile, setShowProfile] = useState(false); // Gérer l'affichage du profil
+  const [showProfile, setShowProfile] = useState(false);
   const [pollData, setPollData] = useState(null);
 
   const handleLogin = (email, password) => {
@@ -25,26 +29,29 @@ function MainPage() {
       setCurrentUser({ email: email });
     } else {
       console.log("Invalid email format");
-      // Gérer l'erreur d'email invalide ici, peut-être en définissant un état d'erreur
     }
   };
 
   const handleLogout = () => {
     setIsConnected(false);
     setCurrentUser({ email: '' });
-    setShowProfile(false); // Réinitialiser lors de la déconnexion
+    setShowProfile(false);
   };
 
   const addMessage = (newMessage) => {
-    setMessages([...messages, newMessage]);
+    setMessages([...messages, { ...newMessage, id: messages.length, author: currentUser.email }]);
   };
 
   const toggleProfileView = () => {
-    setShowProfile(!showProfile); // Basculer la vue du profil
+    setShowProfile(!showProfile);
   };
 
   const handleSavePoll = (poll) => {
     setPollData(poll);
+  };
+
+  const updateUserProfile = (updates) => {
+    setUserProfile(prevState => ({ ...prevState, ...updates }));
   };
 
   if (!isConnected) {
@@ -57,9 +64,14 @@ function MainPage() {
   }
 
   if (showProfile) {
-    return <ProfilePage currentUser={currentUser.email} onBackToMain={toggleProfileView} />;
+    const userMessages = messages.filter(message => message.author === currentUser.email);
+    return <ProfilePage 
+             currentUser={currentUser.email} 
+             userProfile={userProfile} 
+             messages={userMessages} 
+             updateUserProfile={updateUserProfile} 
+             onBackToMain={toggleProfileView} />;
   }
-  
 
   return (
     <div className="messages-container">
